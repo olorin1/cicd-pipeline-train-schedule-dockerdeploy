@@ -27,7 +27,7 @@ pipeline {
             }
             steps {
                 script {
-                    echo -n ${PASS} | docker login -u docker_hub_login --password-stdin https://registry.hub.docker.com
+                    sh '''echo -n ${PASS} | docker login -u olorin.g@gmail.com https://registry.hub.docker.com'''
                     docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_login') {
                         app.push("${env.BUILD_NUMBER}")
                         app.push("latest")
